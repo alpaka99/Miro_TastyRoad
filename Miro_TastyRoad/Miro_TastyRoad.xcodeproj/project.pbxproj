@@ -15,6 +15,7 @@
 		CE0CDB3E2920E73B0046069E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB3D2920E73B0046069E /* ProfileView.swift */; };
 		CE0CDB402920E8C80046069E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB3F2920E8C80046069E /* Place.swift */; };
 		CE0CDB44292100490046069E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CDB43292100490046069E /* Assets.xcassets */; };
+		CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB45292281E70046069E /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		CE0CDB3D2920E73B0046069E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CE0CDB3F2920E8C80046069E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		CE0CDB43292100490046069E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Preview Content/Assets.xcassets"; sourceTree = "<group>"; };
+		CE0CDB45292281E70046069E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Miro-TastyRoad-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,11 +62,13 @@
 		CE0CDB2A291EFDAD0046069E /* Miro_TastyRoad */ = {
 			isa = PBXGroup;
 			children = (
+				CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */,
 				CE0CDB2B291EFDAD0046069E /* Miro_TastyRoadApp.swift */,
 				CE0CDB2D291EFDAD0046069E /* ContentView.swift */,
 				CE0CDB3F2920E8C80046069E /* Place.swift */,
 				CE0CDB3B2920D9FF0046069E /* SavedListView.swift */,
 				CE0CDB392920D8780046069E /* MapView.swift */,
+				CE0CDB45292281E70046069E /* LocationFetcher.swift */,
 				CE0CDB3D2920E73B0046069E /* ProfileView.swift */,
 				CE0CDB43292100490046069E /* Assets.xcassets */,
 				CE0CDB31291EFDAE0046069E /* Preview Content */,
@@ -152,6 +157,7 @@
 				CE0CDB3C2920D9FF0046069E /* SavedListView.swift in Sources */,
 				CE0CDB2E291EFDAD0046069E /* ContentView.swift in Sources */,
 				CE0CDB3E2920E73B0046069E /* ProfileView.swift in Sources */,
+				CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */,
 				CE0CDB402920E8C80046069E /* Place.swift in Sources */,
 				CE0CDB3A2920D8780046069E /* MapView.swift in Sources */,
 				CE0CDB2C291EFDAD0046069E /* Miro_TastyRoadApp.swift in Sources */,
@@ -286,6 +292,8 @@
 				DEVELOPMENT_TEAM = CZH2CMCGCZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Miro-TastyRoad-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to know where you are";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -315,6 +323,8 @@
 				DEVELOPMENT_TEAM = CZH2CMCGCZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Miro-TastyRoad-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to know where you are";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
