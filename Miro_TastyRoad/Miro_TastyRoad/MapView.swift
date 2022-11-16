@@ -15,6 +15,8 @@ struct MapView: View {
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.570212883541835, longitude: 126.98303503392553), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     @State private var searchText = ""
     @State private var userLocation = MKUserLocation()
+    @State private var searchLogs = Set<String>()
+    @State private var showingSavePlace = false
     
     let locationFetcher = LocationFetcher()
     
@@ -47,13 +49,19 @@ struct MapView: View {
                     .opacity(0.5)
                     .frame(width: 15, height: 15)
             }
-            .searchable(text: $searchText, prompt: "Where to?")
+            .searchable(text: $searchText, prompt: "Where to?") {
+                ForEach(searchResults, id: \.self) { log in
+                    Text(log)
+                }
+            }
+            .onSubmit(of: .search, doSearch)
+            .sheet(isPresented: $showingSavePlace) {
+                SavePlace(latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
+            }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Button("SavePlace") {
-                        places.saveNewPlace(name: "TestRow", description: "TestDescription", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
-                        
-//                        print(places.placeList)
+                        showingSavePlace.toggle()
                     }
                 }
                 
@@ -72,8 +80,23 @@ struct MapView: View {
         }
     }
     
-    func mark() {
-        
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return Array(searchLogs)
+        } else {
+            return searchLogs.filter {  $0.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
+    
+    func doSearch() {
+        searchLogs.insert(searchText)
+        print("hi")
+        Task {
+            guard let url = URL(string: "https://search.naver.com/search.naver?query=\(searchText)") else {
+                return
+            }
+        }
     }
 }
 

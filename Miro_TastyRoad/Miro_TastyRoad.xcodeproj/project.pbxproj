@@ -16,6 +16,7 @@
 		CE0CDB402920E8C80046069E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB3F2920E8C80046069E /* Place.swift */; };
 		CE0CDB44292100490046069E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CDB43292100490046069E /* Assets.xcassets */; };
 		CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB45292281E70046069E /* LocationFetcher.swift */; };
+		CE0CDB4929253C560046069E /* SavePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4829253C560046069E /* SavePlace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CE0CDB43292100490046069E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Preview Content/Assets.xcassets"; sourceTree = "<group>"; };
 		CE0CDB45292281E70046069E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Miro-TastyRoad-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CE0CDB4829253C560046069E /* SavePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				CE0CDB3F2920E8C80046069E /* Place.swift */,
 				CE0CDB3B2920D9FF0046069E /* SavedListView.swift */,
 				CE0CDB392920D8780046069E /* MapView.swift */,
+				CE0CDB4829253C560046069E /* SavePlace.swift */,
 				CE0CDB45292281E70046069E /* LocationFetcher.swift */,
 				CE0CDB3D2920E73B0046069E /* ProfileView.swift */,
 				CE0CDB43292100490046069E /* Assets.xcassets */,
@@ -160,6 +163,7 @@
 				CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */,
 				CE0CDB402920E8C80046069E /* Place.swift in Sources */,
 				CE0CDB3A2920D8780046069E /* MapView.swift in Sources */,
+				CE0CDB4929253C560046069E /* SavePlace.swift in Sources */,
 				CE0CDB2C291EFDAD0046069E /* Miro_TastyRoadApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

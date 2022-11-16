@@ -8,7 +8,11 @@
 import Foundation
 import CoreLocation
 
-struct Place: Identifiable, Hashable {
+struct Place: Identifiable, Hashable, Comparable {
+    static func < (lhs: Place, rhs: Place) -> Bool {
+        lhs.created < rhs.created
+    }
+    
     static func == (lhs: Place, rhs: Place) -> Bool {
         lhs.name < rhs.name
     }
@@ -21,13 +25,16 @@ struct Place: Identifiable, Hashable {
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    let created = Date.now
+    
+    static let example = Place(name: "Example", description: "Example", latitude: 37.570212883541835, longitude: 126.98303503392553)
 }
 
 class Places: ObservableObject {
     var placeList = [Place]()
     
     func saveNewPlace(name: String, description: String, latitude: Double, longitude: Double) {
-        var newPlace = Place(name: name, description: description, latitude: latitude, longitude: longitude)
+        let newPlace = Place(name: name, description: description, latitude: latitude, longitude: longitude)
         objectWillChange.send()
         placeList.append(newPlace)
         

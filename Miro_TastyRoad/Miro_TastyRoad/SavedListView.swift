@@ -12,7 +12,7 @@ struct SavedListView: View {
     
     var body: some View {
         List {
-            ForEach(places.placeList, id: \.self) { place in
+            ForEach(places.placeList) { place in
                 Text(place.name)
             }
         }
