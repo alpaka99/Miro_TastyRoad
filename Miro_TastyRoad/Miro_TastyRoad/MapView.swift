@@ -91,11 +91,10 @@ struct MapView: View {
     
     func doSearch() {
         searchLogs.insert(searchText)
-        print("hi")
+        let naverFetcher = NaverFetcher()
         Task {
-            guard let url = URL(string: "https://search.naver.com/search.naver?query=\(searchText)") else {
-                return
-            }
+            await naverFetcher.fetch(searchText)
+            print("done")
         }
     }
 }

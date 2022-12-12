@@ -18,6 +18,7 @@
 		CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB45292281E70046069E /* LocationFetcher.swift */; };
 		CE0CDB4929253C560046069E /* SavePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4829253C560046069E /* SavePlace.swift */; };
 		CE0CDB4D2928EE060046069E /* NaverFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4C2928EE060046069E /* NaverFetcher.swift */; };
+		CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79F3294769FA008748F8 /* NaverResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Miro-TastyRoad-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CE0CDB4829253C560046069E /* SavePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlace.swift; sourceTree = "<group>"; };
 		CE0CDB4C2928EE060046069E /* NaverFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverFetcher.swift; sourceTree = "<group>"; };
+		CE6F79F3294769FA008748F8 /* NaverResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		CE0CDB1F291EFDAD0046069E = {
 			isa = PBXGroup;
 			children = (
+				CE6F79F3294769FA008748F8 /* NaverResult.swift */,
 				CE0CDB2A291EFDAD0046069E /* Miro_TastyRoad */,
 				CE0CDB29291EFDAD0046069E /* Products */,
 			);
@@ -167,6 +170,7 @@
 				CE0CDB402920E8C80046069E /* Place.swift in Sources */,
 				CE0CDB4D2928EE060046069E /* NaverFetcher.swift in Sources */,
 				CE0CDB3A2920D8780046069E /* MapView.swift in Sources */,
+				CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */,
 				CE0CDB4929253C560046069E /* SavePlace.swift in Sources */,
 				CE0CDB2C291EFDAD0046069E /* Miro_TastyRoadApp.swift in Sources */,
 			);
