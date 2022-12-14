@@ -7,6 +7,14 @@
 
 import Foundation
 
+class NaverDataManager {
+    static let shared = NaverDataManager()
+    var searchResult: NaverResult?
+    
+    private init() {
+        
+    }
+}
 
 struct NaverResult: Codable {
     let lastBuildDate: String

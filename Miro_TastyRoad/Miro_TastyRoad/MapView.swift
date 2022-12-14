@@ -49,12 +49,12 @@ struct MapView: View {
                     .opacity(0.5)
                     .frame(width: 15, height: 15)
             }
-            .searchable(text: $searchText, prompt: "Where to?") {
-                ForEach(searchResults, id: \.self) { log in
-                    Text(log)
-                }
-            }
-            .onSubmit(of: .search, doSearch)
+//            .searchable(text: $searchText, prompt: "Where to?") {
+//                ForEach(searchResults, id: \.self) { log in
+//                    Text(log)
+//                }
+//            }
+//            .onSubmit(of: .search, doSearch)
             .sheet(isPresented: $showingSavePlace) {
                 SavePlace(latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
             }
@@ -74,7 +74,13 @@ struct MapView: View {
                             } else {
                                 mapRegion.center = CLLocationCoordinate2D(latitude: 37.570212883541835, longitude: 126.98303503392553)
                             }
-                                }
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink("Search") {
+                        CustomSearchView()
+                    }
                 }
             }
         }
