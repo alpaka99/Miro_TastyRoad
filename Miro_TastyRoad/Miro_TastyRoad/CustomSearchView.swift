@@ -8,15 +8,51 @@
 import SwiftUI
 
 struct CustomSearchView: View {
+    @EnvironmentObject var places: Places
+    
     @State private var searchText = ""
     @State private var searchLogs = Set<String>()
     
     @State private var searching = false
+    @State private var showingSearchResult = false
     
     var body: some View {
         VStack(alignment: .leading) {
+            // searchbar
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.secondary)
+                    .background(Color(red: 0.5, green: 0.5, blue: 1))
+                
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Where to?", text: $searchText) { startEditing in
+                        if startEditing {
+                            withAnimation {
+                                searching = true
+                            }
+                        }
+                    } onCommit: {
+                        searchLogs.insert(searchText)
+                        searching = false
+                        showingSearchResult.toggle()
+                    }
+                    Image(systemName: "xmark")
+                        .onTapGesture {
+                            searchText = ""
+                            withAnimation {
+                                searching = false
+                            }
+                        }
+                }
+                .foregroundColor(.white)
+                .padding(13)
+            }
+            .frame(height: 40)
+            .cornerRadius(13)
+            .padding()
             
-            SearchBar(searchText: $searchText, searching: $searching, searchLogs: $searchLogs)
+            // searched logs
             List(searchResults, id: \.self) { log in
                 HStack {
                     Text(log)
@@ -26,26 +62,34 @@ struct CustomSearchView: View {
                             deleteLog(log: log)
                         }
                 }
-//                Text(log)
+                .onTapGesture {
+                    searching = false
+                    searchText = log
+                }
             }
             .listStyle(GroupedListStyle())
             .navigationTitle(searching ?  "Searching..." : "Custom Searchbar")
+            .navigationBarTitleDisplayMode(.inline)
             .gesture(DragGesture()
                 .onChanged({ _ in
                     UIApplication.shared.dismissKeyboard()
                 }))
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if searching {
-                        Button("Cancel") {
-                            searchText = ""
-                            withAnimation {
-                                searching = false
-                            }
-                        }
-                    }
-                }
+            .sheet(isPresented: $showingSearchResult) {
+                SearchResultView(searchText: searchText)
+                    .environmentObject(places)
             }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    if searching {
+//                        Button("Cancel") {
+//                            searchText = ""
+//                            withAnimation {
+//                                searching = false
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }
     }
     
@@ -57,6 +101,7 @@ struct CustomSearchView: View {
             }
         }
     }
+    
     
     func deleteLog(log: String) {
         searchLogs.remove(log)
@@ -76,6 +121,7 @@ struct SearchBar: View {
             
             HStack {
                 Image(systemName: "magnifyingglass")
+                
                 TextField("Where to?", text: $searchText) { startEditing in
                     if startEditing {
                         withAnimation {
@@ -86,9 +132,17 @@ struct SearchBar: View {
                     searching = false
                     doSearch()
                 }
+                
+                Image(systemName: "xmark")
+                    .onTapGesture {
+                        searchText = ""
+                        withAnimation {
+                            searching = false
+                        }
+                    }
             }
             .foregroundColor(.white)
-            .padding(.leading, 13)
+            .padding(13)
         }
         .frame(height: 40)
         .cornerRadius(13)
@@ -111,6 +165,7 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
 
 struct CustomSearchView_Previews: PreviewProvider {
     static var previews: some View {

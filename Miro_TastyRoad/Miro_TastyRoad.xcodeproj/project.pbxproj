@@ -20,6 +20,7 @@
 		CE0CDB4D2928EE060046069E /* NaverFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4C2928EE060046069E /* NaverFetcher.swift */; };
 		CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79F3294769FA008748F8 /* NaverResult.swift */; };
 		CE6F79FA2949E70F008748F8 /* CustomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79F92949E70F008748F8 /* CustomSearchView.swift */; };
+		CE6F79FC294B24E5008748F8 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79FB294B24E5008748F8 /* SearchResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CE0CDB4C2928EE060046069E /* NaverFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverFetcher.swift; sourceTree = "<group>"; };
 		CE6F79F3294769FA008748F8 /* NaverResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverResult.swift; sourceTree = "<group>"; };
 		CE6F79F92949E70F008748F8 /* CustomSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchView.swift; sourceTree = "<group>"; };
+		CE6F79FB294B24E5008748F8 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				CE6F79F92949E70F008748F8 /* CustomSearchView.swift */,
 				CE0CDB4C2928EE060046069E /* NaverFetcher.swift */,
 				CE0CDB4829253C560046069E /* SavePlace.swift */,
+				CE6F79FB294B24E5008748F8 /* SearchResultView.swift */,
 				CE0CDB45292281E70046069E /* LocationFetcher.swift */,
 				CE0CDB3D2920E73B0046069E /* ProfileView.swift */,
 				CE0CDB43292100490046069E /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0CDB3C2920D9FF0046069E /* SavedListView.swift in Sources */,
+				CE6F79FC294B24E5008748F8 /* SearchResultView.swift in Sources */,
 				CE0CDB2E291EFDAD0046069E /* ContentView.swift in Sources */,
 				CE6F79FA2949E70F008748F8 /* CustomSearchView.swift in Sources */,
 				CE0CDB3E2920E73B0046069E /* ProfileView.swift in Sources */,

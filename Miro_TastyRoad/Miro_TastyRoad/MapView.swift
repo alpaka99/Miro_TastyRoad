@@ -100,7 +100,6 @@ struct MapView: View {
         let naverFetcher = NaverFetcher()
         Task {
             await naverFetcher.fetch(searchText)
-            print("done")
         }
     }
 }
