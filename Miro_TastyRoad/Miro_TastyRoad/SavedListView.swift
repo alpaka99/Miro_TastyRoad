@@ -13,15 +13,24 @@ struct SavedListView: View {
     var body: some View {
         List {
             ForEach(places.placeList) { place in
-                Text(place.name)
+                NavigationLink {
+                    DetailView(place: place)
+                } label: {
+                    Text(place.name)
+                }
+                .padding()
             }
+            .onDelete(perform: deleteListRow)
         }
     }
         
-}
-
-struct SavedListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedListView()
+    func deleteListRow(_ offset: IndexSet) {
+        places.deletePlace(offset)
     }
 }
+
+//struct SavedListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavedListView()
+//    }
+//}

@@ -49,12 +49,6 @@ struct MapView: View {
                     .opacity(0.5)
                     .frame(width: 15, height: 15)
             }
-//            .searchable(text: $searchText, prompt: "Where to?") {
-//                ForEach(searchResults, id: \.self) { log in
-//                    Text(log)
-//                }
-//            }
-//            .onSubmit(of: .search, doSearch)
             .sheet(isPresented: $showingSavePlace) {
                 SavePlace(latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
             }

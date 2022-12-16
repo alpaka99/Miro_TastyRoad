@@ -14,7 +14,7 @@ struct CustomSearchView: View {
     @State private var searchLogs = Set<String>()
     
     @State private var searching = false
-    @State private var showingSearchResult = false
+    @State private var showSearchResult = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,7 +35,7 @@ struct CustomSearchView: View {
                     } onCommit: {
                         searchLogs.insert(searchText)
                         searching = false
-                        showingSearchResult.toggle()
+                        showSearchResult.toggle()
                     }
                     Image(systemName: "xmark")
                         .onTapGesture {
@@ -74,22 +74,11 @@ struct CustomSearchView: View {
                 .onChanged({ _ in
                     UIApplication.shared.dismissKeyboard()
                 }))
-            .sheet(isPresented: $showingSearchResult) {
+            
+            NavigationLink("To SearchResultView", isActive: $showSearchResult) {
                 SearchResultView(searchText: searchText)
-                    .environmentObject(places)
             }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    if searching {
-//                        Button("Cancel") {
-//                            searchText = ""
-//                            withAnimation {
-//                                searching = false
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            .hidden()
         }
     }
     
@@ -108,56 +97,56 @@ struct CustomSearchView: View {
     }
 }
 
-struct SearchBar: View {
-    @Binding var searchText: String
-    @Binding var searching: Bool
-    @Binding var searchLogs: Set<String>
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundColor(.secondary)
-                .background(.gray)
-            
-            HStack {
-                Image(systemName: "magnifyingglass")
-                
-                TextField("Where to?", text: $searchText) { startEditing in
-                    if startEditing {
-                        withAnimation {
-                            searching = true
-                        }
-                    }
-                } onCommit: {
-                    searching = false
-                    doSearch()
-                }
-                
-                Image(systemName: "xmark")
-                    .onTapGesture {
-                        searchText = ""
-                        withAnimation {
-                            searching = false
-                        }
-                    }
-            }
-            .foregroundColor(.white)
-            .padding(13)
-        }
-        .frame(height: 40)
-        .cornerRadius(13)
-        .padding()
-    }
-    
-    func doSearch() {
-        searchLogs.insert(searchText)
-        let naverFetcher = NaverFetcher()
-        Task {
-            await naverFetcher.fetch(searchText)
-            print("done")
-        }
-    }
-}
+//struct SearchBar: View {
+//    @Binding var searchText: String
+//    @Binding var searching: Bool
+//    @Binding var searchLogs: Set<String>
+//
+//    var body: some View {
+//        ZStack {
+//            Rectangle()
+//                .foregroundColor(.secondary)
+//                .background(.gray)
+//
+//            HStack {
+//                Image(systemName: "magnifyingglass")
+//
+//                TextField("Where to?", text: $searchText) { startEditing in
+//                    if startEditing {
+//                        withAnimation {
+//                            searching = true
+//                        }
+//                    }
+//                } onCommit: {
+//                    searching = false
+//                    doSearch()
+//                }
+//
+//                Image(systemName: "xmark")
+//                    .onTapGesture {
+//                        searchText = ""
+//                        withAnimation {
+//                            searching = false
+//                        }
+//                    }
+//            }
+//            .foregroundColor(.white)
+//            .padding(13)
+//        }
+//        .frame(height: 40)
+//        .cornerRadius(13)
+//        .padding()
+//    }
+//
+//    func doSearch() {
+//        searchLogs.insert(searchText)
+//        let naverFetcher = NaverFetcher()
+//        Task {
+//            await naverFetcher.fetch(searchText)
+//            print("done")
+//        }
+//    }
+//}
 
 // 검색했던 리스트를 돌아다닐때 키보드가 자연스럽게 내려가는 기능을 위한 익스텐션
 extension UIApplication {

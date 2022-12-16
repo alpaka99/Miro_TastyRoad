@@ -37,6 +37,10 @@ class Places: ObservableObject {
         let newPlace = Place(name: name, description: description, latitude: latitude, longitude: longitude)
         objectWillChange.send()
         placeList.append(newPlace)
-        
+    }
+    
+    func deletePlace(_ offset: IndexSet) {
+        objectWillChange.send()
+        placeList.remove(atOffsets: offset)
     }
 }

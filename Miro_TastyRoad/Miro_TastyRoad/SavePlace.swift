@@ -20,12 +20,21 @@ struct SavePlace: View {
     
     var body: some View {
         VStack {
-            TextField("For name", text: $name)
-            TextField("For description", text: $description)
-            Button("Save") {
+            Form {
+                Section("About this place...") {
+                    TextField("Name", text: $name)
+                    TextField("Description", text: $description)
+                }
+            }
+            
+            Button {
                 places.saveNewPlace(name: name, description: description, latitude: latitude, longitude: longitude)
                 dismiss()
+            } label: {
+                Text("Save")
             }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || description.isEmpty)
         }
     }
 }
