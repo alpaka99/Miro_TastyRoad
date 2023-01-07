@@ -18,10 +18,12 @@
 		CE0CDB46292281E70046069E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB45292281E70046069E /* LocationFetcher.swift */; };
 		CE0CDB4929253C560046069E /* SavePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4829253C560046069E /* SavePlace.swift */; };
 		CE0CDB4D2928EE060046069E /* NaverFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CDB4C2928EE060046069E /* NaverFetcher.swift */; };
+		CE47B6DB29694B4D0068E39A /* MiroDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE47B6D929694B4D0068E39A /* MiroDB.xcdatamodeld */; };
 		CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79F3294769FA008748F8 /* NaverResult.swift */; };
 		CE6F79FA2949E70F008748F8 /* CustomSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79F92949E70F008748F8 /* CustomSearchView.swift */; };
 		CE6F79FC294B24E5008748F8 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79FB294B24E5008748F8 /* SearchResultView.swift */; };
 		CE6F79FE294CB411008748F8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F79FD294CB411008748F8 /* DetailView.swift */; };
+		CE6F7A03294F0614008748F8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F7A02294F0614008748F8 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +40,12 @@
 		CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Miro-TastyRoad-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CE0CDB4829253C560046069E /* SavePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlace.swift; sourceTree = "<group>"; };
 		CE0CDB4C2928EE060046069E /* NaverFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverFetcher.swift; sourceTree = "<group>"; };
+		CE47B6DA29694B4D0068E39A /* MiroDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiroDB.xcdatamodel; sourceTree = "<group>"; };
 		CE6F79F3294769FA008748F8 /* NaverResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverResult.swift; sourceTree = "<group>"; };
 		CE6F79F92949E70F008748F8 /* CustomSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchView.swift; sourceTree = "<group>"; };
 		CE6F79FB294B24E5008748F8 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		CE6F79FD294CB411008748F8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CE6F7A02294F0614008748F8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,6 @@
 		CE0CDB1F291EFDAD0046069E = {
 			isa = PBXGroup;
 			children = (
-				CE6F79F3294769FA008748F8 /* NaverResult.swift */,
 				CE0CDB2A291EFDAD0046069E /* Miro_TastyRoad */,
 				CE0CDB29291EFDAD0046069E /* Products */,
 			);
@@ -77,12 +80,15 @@
 			children = (
 				CE0CDB472922846A0046069E /* Miro-TastyRoad-Info.plist */,
 				CE0CDB2B291EFDAD0046069E /* Miro_TastyRoadApp.swift */,
+				CE6F79F3294769FA008748F8 /* NaverResult.swift */,
 				CE0CDB2D291EFDAD0046069E /* ContentView.swift */,
 				CE0CDB3F2920E8C80046069E /* Place.swift */,
 				CE0CDB3B2920D9FF0046069E /* SavedListView.swift */,
+				CE6F7A02294F0614008748F8 /* DataController.swift */,
 				CE6F79FD294CB411008748F8 /* DetailView.swift */,
 				CE0CDB392920D8780046069E /* MapView.swift */,
 				CE6F79F92949E70F008748F8 /* CustomSearchView.swift */,
+				CE47B6D929694B4D0068E39A /* MiroDB.xcdatamodeld */,
 				CE0CDB4C2928EE060046069E /* NaverFetcher.swift */,
 				CE0CDB4829253C560046069E /* SavePlace.swift */,
 				CE6F79FB294B24E5008748F8 /* SearchResultView.swift */,
@@ -173,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0CDB3C2920D9FF0046069E /* SavedListView.swift in Sources */,
+				CE47B6DB29694B4D0068E39A /* MiroDB.xcdatamodeld in Sources */,
 				CE6F79FC294B24E5008748F8 /* SearchResultView.swift in Sources */,
 				CE0CDB2E291EFDAD0046069E /* ContentView.swift in Sources */,
 				CE6F79FA2949E70F008748F8 /* CustomSearchView.swift in Sources */,
@@ -181,6 +188,7 @@
 				CE0CDB402920E8C80046069E /* Place.swift in Sources */,
 				CE6F79FE294CB411008748F8 /* DetailView.swift in Sources */,
 				CE0CDB4D2928EE060046069E /* NaverFetcher.swift in Sources */,
+				CE6F7A03294F0614008748F8 /* DataController.swift in Sources */,
 				CE0CDB3A2920D8780046069E /* MapView.swift in Sources */,
 				CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */,
 				CE0CDB4929253C560046069E /* SavePlace.swift in Sources */,
@@ -391,6 +399,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE47B6D929694B4D0068E39A /* MiroDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE47B6DA29694B4D0068E39A /* MiroDB.xcdatamodel */,
+			);
+			currentVersion = CE47B6DA29694B4D0068E39A /* MiroDB.xcdatamodel */;
+			path = MiroDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE0CDB20291EFDAD0046069E /* Project object */;
 }

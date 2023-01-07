@@ -9,11 +9,12 @@ import SwiftUI
 
 struct SavePlace: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var moc
     
     @EnvironmentObject var places: Places
     
     @State private var name = ""
-    @State private var description = ""
+    @State private var descriptions = ""
     
     let latitude: Double
     let longitude: Double
@@ -23,20 +24,21 @@ struct SavePlace: View {
             Form {
                 Section("About this place...") {
                     TextField("Name", text: $name)
-                    TextField("Description", text: $description)
+                    TextField("Descriptions", text: $descriptions)
                 }
             }
             
             Button {
-                places.saveNewPlace(name: name, description: description, latitude: latitude, longitude: longitude)
+//                places.saveNewPlace(name: name, description: descriptions, latitude: latitude, longitude: longitude)
                 dismiss()
             } label: {
                 Text("Save")
             }
             .buttonStyle(.borderedProminent)
-            .disabled(name.isEmpty || description.isEmpty)
+            .disabled(name.isEmpty || descriptions.isEmpty)
         }
     }
+    
 }
 
 struct SavePlace_Previews: PreviewProvider {

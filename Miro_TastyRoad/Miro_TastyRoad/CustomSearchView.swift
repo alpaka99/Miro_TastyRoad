@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CustomSearchView: View {
+    @FetchRequest(sortDescriptors: []) var searchLogs: FetchedResults<SearchLog>
+    @Environment(\.managedObjectContext) var moc
+    
     @EnvironmentObject var places: Places
     
     @State private var searchText = ""
-    @State private var searchLogs = Set<String>()
     
     @State private var searching = false
     @State private var showSearchResult = false
@@ -33,7 +35,7 @@ struct CustomSearchView: View {
                             }
                         }
                     } onCommit: {
-                        searchLogs.insert(searchText)
+                        saveLog(searchText)
                         searching = false
                         showSearchResult.toggle()
                     }
@@ -53,18 +55,21 @@ struct CustomSearchView: View {
             .padding()
             
             // searched logs
-            List(searchResults, id: \.self) { log in
-                HStack {
-                    Text(log)
-                    Spacer()
-                    Image(systemName: "xmark")
+            List{
+                ForEach(searchLogs, id: \.self){ log in
+                    HStack {
+                        Text(log.text!) // needs refactoring about optional
+                        Spacer()
+                        Image(systemName: "xmark")
                         .onTapGesture {
-                            deleteLog(log: log)
+                            // delete function
+                            deleteLog(log.text!)
                         }
                 }
                 .onTapGesture {
                     searching = false
-                    searchText = log
+                    searchText = log.text!
+                    }
                 }
             }
             .listStyle(GroupedListStyle())
@@ -82,18 +87,35 @@ struct CustomSearchView: View {
         }
     }
     
-    var searchResults: [String] {
-        if searchText.isEmpty {
-            return Array(searchLogs)
-        } else {
-            return searchLogs.filter {  $0.localizedCaseInsensitiveContains(searchText)
+    func saveLog(_ text: String) {
+        // unsearched check
+        var unsearchedFlag = true
+        searchLogs.forEach { log in
+            if log.text == searchText {
+                unsearchedFlag = false
+                return
             }
         }
+        
+        // if not searched before
+        if unsearchedFlag {
+            let newLog = SearchLog(context: moc)
+            newLog.text = searchText
+            
+            try? moc.save()
+        }
+        
     }
     
-    
-    func deleteLog(log: String) {
-        searchLogs.remove(log)
+    func deleteLog(_ text: String) {
+        for i in (0..<searchLogs.count) {
+            if searchLogs[i].text == text {
+                moc.delete(searchLogs[i])
+                
+                try? moc.save()
+                break
+            }
+        }
     }
 }
 

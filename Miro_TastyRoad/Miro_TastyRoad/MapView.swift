@@ -11,6 +11,7 @@ import MapKit
 struct MapView: View {
     @EnvironmentObject var places: Places
     
+    
     // start location: Seoul, Jongak Station
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.570212883541835, longitude: 126.98303503392553), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     @State private var searchText = ""

@@ -56,7 +56,7 @@ class NaverFetcher {
 //            print(response)
             do {
                 let searchResult = try JSONDecoder().decode(NaverResult.self, from: data)
-                print(searchResult)
+//                print(searchResult)
                 NaverDataManager.naverShared.searchResultChange(searchResult)
 //                NaverDataManager.naverShared.searchResults = searchResult
             } catch {
