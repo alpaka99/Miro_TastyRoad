@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchResultView: View {
-    @EnvironmentObject var places: Places
+//    @EnvironmentObject var places: Places
     
     @ObservedObject var naverShared = NaverDataManager.naverShared
     

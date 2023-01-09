@@ -13,14 +13,19 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            Text(place.name)
-            Text(place.description)
+            Text("음식점 이름: \(place.placeName)")
+                .padding()
+            
+            Text("메모: \(place.placeDescriptions)")
+                .padding()
         }
+        .navigationTitle(place.placeName)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(place: Place.example)
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView(place: Place.example)
+//    }
+//}

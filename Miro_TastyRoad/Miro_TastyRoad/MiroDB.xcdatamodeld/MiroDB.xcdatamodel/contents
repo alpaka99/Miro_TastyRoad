@@ -9,10 +9,11 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SearchLog" representedClassName="SearchLog" syncable="YES" codeGenerationType="class">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Place" positionX="-36" positionY="18" width="128" height="119"/>
-        <element name="SearchLog" positionX="-54" positionY="-9" width="128" height="44"/>
+        <element name="SearchLog" positionX="-54" positionY="-9" width="128" height="59"/>
     </elements>
 </model>

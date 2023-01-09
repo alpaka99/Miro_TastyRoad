@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CustomSearchView: View {
-    @FetchRequest(sortDescriptors: []) var searchLogs: FetchedResults<SearchLog>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.created, order: .reverse)]) var searchLogs: FetchedResults<SearchLog>
     @Environment(\.managedObjectContext) var moc
     
-    @EnvironmentObject var places: Places
+//    @EnvironmentObject var places: Places
     
     @State private var searchText = ""
     
@@ -60,7 +61,8 @@ struct CustomSearchView: View {
                     HStack {
                         Text(log.text!) // needs refactoring about optional
                         Spacer()
-                        Image(systemName: "xmark")
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.red)
                         .onTapGesture {
                             // delete function
                             deleteLog(log.text!)
@@ -101,8 +103,11 @@ struct CustomSearchView: View {
         if unsearchedFlag {
             let newLog = SearchLog(context: moc)
             newLog.text = searchText
+            newLog.created = Date.now
             
-            try? moc.save()
+            if moc.hasChanges {
+                try? moc.save()
+            }
         }
         
     }
@@ -112,7 +117,9 @@ struct CustomSearchView: View {
             if searchLogs[i].text == text {
                 moc.delete(searchLogs[i])
                 
-                try? moc.save()
+                if moc.hasChanges {
+                    try? moc.save()
+                }
                 break
             }
         }

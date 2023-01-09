@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct SavedListView: View {
-    @EnvironmentObject var places: Places
+//    @EnvironmentObject var places: Places
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.created, order: .reverse)]) var places: FetchedResults<Place>
     
     var body: some View {
         List {
-            ForEach(places.placeList) { place in
+            ForEach(places) { place in
                 NavigationLink {
                     DetailView(place: place)
                 } label: {
-                    Text(place.name)
+                    Text(place.placeName)
                 }
                 .padding()
             }
-            .onDelete(perform: deleteListRow)
+//            .onDelete(perform: deleteListRow)
         }
     }
         
-    func deleteListRow(_ offset: IndexSet) {
-        places.deletePlace(offset)
-    }
+//    func deleteListRow(_ offset: IndexSet) {
+//        places.deletePlace(offset)
+//    }
 }
 
 //struct SavedListView_Previews: PreviewProvider {

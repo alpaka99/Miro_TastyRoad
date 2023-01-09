@@ -11,7 +11,7 @@ struct SavePlace: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var moc
     
-    @EnvironmentObject var places: Places
+//    @EnvironmentObject var places: Places
     
     @State private var name = ""
     @State private var descriptions = ""
@@ -29,7 +29,7 @@ struct SavePlace: View {
             }
             
             Button {
-//                places.saveNewPlace(name: name, description: descriptions, latitude: latitude, longitude: longitude)
+                savePlace(name: name, descriptions: descriptions, latitude: latitude, longitude: longitude)
                 dismiss()
             } label: {
                 Text("Save")
@@ -39,10 +39,24 @@ struct SavePlace: View {
         }
     }
     
-}
-
-struct SavePlace_Previews: PreviewProvider {
-    static var previews: some View {
-        SavePlace(latitude: Place.example.latitude, longitude: Place.example.longitude)
+    func savePlace(name: String, descriptions: String, latitude: Double, longitude: Double) {
+        let newPlace = Place(context: moc)
+        
+        newPlace.name = name
+        newPlace.descriptions = descriptions
+        newPlace.id = UUID()
+        newPlace.latitude = latitude
+        newPlace.longitude = longitude
+        newPlace.created = Date.now
+        
+        if moc.hasChanges {
+            try? moc.save()
+        }
     }
 }
+
+//struct SavePlace_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavePlace(latitude: Place.example.latitude, longitude: Place.example.longitude)
+//    }
+//}

@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var places = Places()
+//    @State private var places = Places()
     
     var body: some View {
         NavigationView {
@@ -32,7 +32,7 @@ struct ContentView: View {
             }
             .navigationTitle("미로(TastyRoad)")
             .navigationBarTitleDisplayMode(.inline)
-            .environmentObject(places)
+//            .environmentObject(places)
         }
     }
 }

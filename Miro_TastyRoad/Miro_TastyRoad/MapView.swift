@@ -9,8 +9,9 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @EnvironmentObject var places: Places
-    
+//    @EnvironmentObject var places: Places
+    @FetchRequest(sortDescriptors: []) var places: FetchedResults<Place>
+    @Environment(\.managedObjectContext) var moc
     
     // start location: Seoul, Jongak Station
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.570212883541835, longitude: 126.98303503392553), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -24,21 +25,31 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Map(coordinateRegion: $mapRegion, showsUserLocation: true, annotationItems: places.placeList) { place in
+                Map(coordinateRegion: $mapRegion, showsUserLocation: true, annotationItems: places) { place in
                     MapAnnotation(coordinate: place.coordinate) {
-                        ZStack {
-                            Image(systemName: "flag.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.red)
-                                .frame(width: 20, height: 20)
+                        VStack(spacing: 0) {
+                            Text(place.placeName)
                             
-//                            Circle()
-//                                .stroke(.red)
-//                                .frame(width:25, height: 25)
+                            Image(systemName: "star.circle.fill")
+                                       .resizable()
+                                       .foregroundColor(.blue)
+                                       .frame(width: 30, height: 30)
+                                       .background(.white)
+                                       .clipShape(Circle())
                         }
-                        .onTapGesture {
-                            print(place.name)
+                        .contextMenu {
+                            Button {
+                                deletePlace(place.id)
+                            } label: {
+                                Label("Delete", systemImage: "delete.left.fill")
+                            }
+                            
+                            
+                            Button {
+                                print("Edit")
+                            } label: {
+                                Label("Edit", systemImage: "pencil.and.ellipsis.rectangle")
+                            }
                         }
                         
                     }
@@ -61,7 +72,7 @@ struct MapView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Move to user's location") {
+                    Button {
                             self.locationFetcher.start()
                             if let location = self.locationFetcher.lastKnownLocation {
                                 print("Your location is \(location)")
@@ -69,32 +80,40 @@ struct MapView: View {
                             } else {
                                 mapRegion.center = CLLocationCoordinate2D(latitude: 37.570212883541835, longitude: 126.98303503392553)
                             }
+                    } label: {
+                        HStack {
+                            Image(systemName: "location.circle")
+                            Text("Current Location")
+                        }
                     }
+                    .background(.ultraThinMaterial)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink("Search") {
+                    NavigationLink {
                         CustomSearchView()
+                    } label: {
+                        HStack {
+                            Text("Search")
+                            Image(systemName: "magnifyingglass")
+                        }
                     }
+                    .background(.ultraThinMaterial)
                 }
             }
         }
     }
     
-    var searchResults: [String] {
-        if searchText.isEmpty {
-            return Array(searchLogs)
-        } else {
-            return searchLogs.filter {  $0.localizedCaseInsensitiveContains(searchText)
+    func deletePlace(_ id: UUID) {
+        for i in (0..<places.count) {
+            if places[i].id == id {
+                moc.delete(places[i])
+                
+                if moc.hasChanges {
+                    try? moc.save()
+                }
+                break
             }
-        }
-    }
-    
-    func doSearch() {
-        searchLogs.insert(searchText)
-        let naverFetcher = NaverFetcher()
-        Task {
-            await naverFetcher.fetch(searchText)
         }
     }
 }
