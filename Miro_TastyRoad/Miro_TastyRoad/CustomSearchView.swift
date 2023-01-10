@@ -65,7 +65,7 @@ struct CustomSearchView: View {
                             .foregroundColor(.red)
                         .onTapGesture {
                             // delete function
-                            deleteLog(log.text!)
+                            deleteLog(log: log)
                         }
                 }
                 .onTapGesture {
@@ -112,16 +112,11 @@ struct CustomSearchView: View {
         
     }
     
-    func deleteLog(_ text: String) {
-        for i in (0..<searchLogs.count) {
-            if searchLogs[i].text == text {
-                moc.delete(searchLogs[i])
-                
-                if moc.hasChanges {
-                    try? moc.save()
-                }
-                break
-            }
+    func deleteLog(log: SearchLog) {
+        moc.delete(log)
+        
+        if moc.hasChanges {
+            try? moc.save()
         }
     }
 }

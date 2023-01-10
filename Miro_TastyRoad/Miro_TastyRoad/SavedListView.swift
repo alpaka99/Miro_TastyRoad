@@ -16,7 +16,8 @@ struct SavedListView: View {
         List {
             ForEach(places) { place in
                 NavigationLink {
-                    DetailView(place: place)
+                    DetailView()
+                        .environmentObject(place)
                 } label: {
                     Text(place.placeName)
                 }

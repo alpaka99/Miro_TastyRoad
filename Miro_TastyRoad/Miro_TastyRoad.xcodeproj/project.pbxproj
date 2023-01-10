@@ -26,6 +26,7 @@
 		CE6F7A03294F0614008748F8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F7A02294F0614008748F8 /* DataController.swift */; };
 		CEA82207296BE9580055CE38 /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA82205296BE9580055CE38 /* Place+CoreDataClass.swift */; };
 		CEA82208296BE9580055CE38 /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA82206296BE9580055CE38 /* Place+CoreDataProperties.swift */; };
+		CEA8220A296D209D0055CE38 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA82209296D209D0055CE38 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		CE6F7A02294F0614008748F8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CEA82205296BE9580055CE38 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CEA82206296BE9580055CE38 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEA82209296D209D0055CE38 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				CE6F7A02294F0614008748F8 /* DataController.swift */,
 				CE6F79FD294CB411008748F8 /* DetailView.swift */,
 				CE0CDB392920D8780046069E /* MapView.swift */,
+				CEA82209296D209D0055CE38 /* EditView.swift */,
 				CE6F79F92949E70F008748F8 /* CustomSearchView.swift */,
 				CE47B6D929694B4D0068E39A /* MiroDB.xcdatamodeld */,
 				CE0CDB4C2928EE060046069E /* NaverFetcher.swift */,
@@ -198,6 +201,7 @@
 				CE6F7A03294F0614008748F8 /* DataController.swift in Sources */,
 				CE0CDB3A2920D8780046069E /* MapView.swift in Sources */,
 				CE6F79F4294769FA008748F8 /* NaverResult.swift in Sources */,
+				CEA8220A296D209D0055CE38 /* EditView.swift in Sources */,
 				CEA82207296BE9580055CE38 /* Place+CoreDataClass.swift in Sources */,
 				CE0CDB4929253C560046069E /* SavePlace.swift in Sources */,
 				CE0CDB2C291EFDAD0046069E /* Miro_TastyRoadApp.swift in Sources */,

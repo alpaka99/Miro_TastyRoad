@@ -16,17 +16,17 @@ struct ContentView: View {
             TabView {
                 MapView()
                     .tabItem {
-                        Image(systemName: "1.square.fill")
+                        Image(systemName: "map")
                         Text("Map")
                     }
                 SavedListView()
                     .tabItem {
-                        Image(systemName: "2.square.fill")
+                        Image(systemName: "list.bullet")
                         Text("SavedList")
                     }
                 ProfileView()
                     .tabItem {
-                        Image(systemName: "3.square.fill")
+                        Image(systemName: "person.crop.square.fill")
                         Text("Profile")
                     }
             }

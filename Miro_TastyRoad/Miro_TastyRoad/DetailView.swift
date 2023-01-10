@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
-    
-    let place: Place
+
+    @EnvironmentObject var place: Place
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
+//    var place: Place
     
     var body: some View {
         VStack {
@@ -21,6 +24,40 @@ struct DetailView: View {
         }
         .navigationTitle(place.placeName)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    EditView(editedName: place.placeName, editedDescriptions: place.placeDescriptions)
+                        .environmentObject(place)
+                } label: {
+                    HStack {
+                        Image(systemName: "pencil")
+                        Text("Edit")
+                    }
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+//                    @FetchRequest( entity: Place.entity(), sortDescriptors: [], predicate: NSPredicate(format: "id == %@", place.id as CVarArg)) var places: FetchedResults<Place>
+//
+                    deletePlace()
+                    
+//                    dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "trash.fill")
+                        Text("Delete")
+                    }
+                }
+            }
+        }
+    }
+    
+    func deletePlace() {
+        moc.delete(place)
+        
+        try? moc.save()
     }
 }
 

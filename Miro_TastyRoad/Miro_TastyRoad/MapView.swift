@@ -19,6 +19,7 @@ struct MapView: View {
     @State private var userLocation = MKUserLocation()
     @State private var searchLogs = Set<String>()
     @State private var showingSavePlace = false
+    @State private var showingEditView = false
     
     let locationFetcher = LocationFetcher()
     
@@ -44,14 +45,17 @@ struct MapView: View {
                                 Label("Delete", systemImage: "delete.left.fill")
                             }
                             
-                            
                             Button {
-                                print("Edit")
+                                showingEditView.toggle()
                             } label: {
                                 Label("Edit", systemImage: "pencil.and.ellipsis.rectangle")
                             }
                         }
                         
+                        NavigationLink("", isActive: $showingEditView) {
+                            EditView(editedName: place.placeName, editedDescriptions: place.placeDescriptions)
+                                .environmentObject(place)
+                        }
                     }
                 }
                     .ignoresSafeArea()
@@ -86,7 +90,7 @@ struct MapView: View {
                             Text("Current Location")
                         }
                     }
-                    .background(.ultraThinMaterial)
+//                    .background(.ultraThinMaterial)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -98,7 +102,7 @@ struct MapView: View {
                             Image(systemName: "magnifyingglass")
                         }
                     }
-                    .background(.ultraThinMaterial)
+//                    .background(.ultraThinMaterial)
                 }
             }
         }
@@ -108,7 +112,7 @@ struct MapView: View {
         for i in (0..<places.count) {
             if places[i].id == id {
                 moc.delete(places[i])
-                
+
                 if moc.hasChanges {
                     try? moc.save()
                 }
