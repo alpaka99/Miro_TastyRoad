@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
-
+    @FetchRequest(sortDescriptors: []) var places: FetchedResults<Place>
+    
     @EnvironmentObject var place: Place
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
-//    var place: Place
     
     var body: some View {
         VStack {
@@ -42,8 +42,7 @@ struct DetailView: View {
 //                    @FetchRequest( entity: Place.entity(), sortDescriptors: [], predicate: NSPredicate(format: "id == %@", place.id as CVarArg)) var places: FetchedResults<Place>
 //
                     deletePlace()
-                    
-//                    dismiss()
+                    dismiss()
                 } label: {
                     HStack {
                         Image(systemName: "trash.fill")
@@ -55,9 +54,16 @@ struct DetailView: View {
     }
     
     func deletePlace() {
-        moc.delete(place)
-        
-        try? moc.save()
+        for i in (0..<places.count) {
+            if places[i].id == place.id {
+                moc.delete(places[i])
+
+                if moc.hasChanges {
+                    try? moc.save()
+                }
+                return
+            }
+        }
     }
 }
 

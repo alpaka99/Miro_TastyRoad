@@ -116,7 +116,7 @@ struct MapView: View {
                 if moc.hasChanges {
                     try? moc.save()
                 }
-                break
+                return
             }
         }
     }
