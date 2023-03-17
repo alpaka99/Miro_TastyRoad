@@ -9,49 +9,30 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+//    @State private var places = Places()
     
-    @State private var searchText = ""
     var body: some View {
         NavigationView {
-            ZStack {
-//                버튼을 위아래로 만들고 싶은데 왜 안되지?
-//                VStack {
-//                    HStack {
-//                        Spacer()
-//
-//                        Button("Top") {
-//                            print("Top")
-//                        }
-//                    }
-//
-//                    Spacer()
-//
-//                    HStack {
-//                        Spacer()
-//
-//                        Button("Bottom") {
-//                            print("Bottom")
-//                        }
-//                    }
-//                }
-                
-                Map(coordinateRegion: $mapRegion)
-                    .ignoresSafeArea()
-                
-                Circle()
-                    .fill(.red)
-                    .opacity(0.5)
-                    .frame(width: 15, height: 15)
+            TabView {
+                MapView()
+                    .tabItem {
+                        Image(systemName: "map")
+                        Text("Map")
+                    }
+                SavedListView()
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("SavedList")
+                    }
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person.crop.square.fill")
+                        Text("Profile")
+                    }
             }
-            .searchable(text: $searchText, prompt: "Where to?")
-//            .toolbar {
-//                Button {
-//                    print("Hello world")
-//                } label: {
-//                    Image(systemName: "checkmark")
-//                }
-//            }
+            .navigationTitle("미로(TastyRoad)")
+            .navigationBarTitleDisplayMode(.inline)
+//            .environmentObject(places)
         }
     }
 }
